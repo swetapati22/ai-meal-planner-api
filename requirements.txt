@@ -1,0 +1,34 @@
+# Core Framework
+fastapi
+uvicorn[standard]
+pydantic
+pydantic-settings
+
+# HTTP Client
+httpx
+requests
+
+# Environment Variables
+python-dotenv
+
+# LLM APIs
+openai
+
+# Recipe APIs
+# Spoonacular and Edamam don't have official Python packages
+# Use requests/httpx directly for API calls
+
+# Utilities
+python-dateutil
+cachetools
+
+# Optional: Enhanced features
+# redis  # For Redis caching (if implementing)
+# python-multipart  # For file uploads (if needed)
+
+# Development Tools (optional, for testing and code quality)
+pytest
+pytest-asyncio
+black  # Code formatter
+flake8  # Linter
+

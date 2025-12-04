@@ -1,0 +1,273 @@
+{
+  "meal_plan_id": "3f12da9f-b6b5-416a-b76a-a3a98dc3d082",
+  "duration_days": 3,
+  "generated_at": "2025-12-04T21:02:59.276625Z",
+  "meal_plan": [
+    {
+      "day": 1,
+      "date": "2025-12-04",
+      "meals": [
+        {
+          "meal_type": "breakfast",
+          "recipe_name": "Savory Spinach and Feta Omelette",
+          "description": "A fluffy omelette filled with fresh spinach and tangy feta cheese, served with whole grain toast.",
+          "ingredients": [
+            "3 large eggs",
+            "1 cup fresh spinach",
+            "1/4 cup crumbled feta cheese",
+            "1 slice whole grain bread",
+            "1 tsp olive oil",
+            "Salt and pepper to taste"
+          ],
+          "nutritional_info": {
+            "calories": 350,
+            "protein": 25.0,
+            "carbs": 30.0,
+            "fat": 15.0
+          },
+          "preparation_time": "15 mins",
+          "instructions": "In a bowl, whisk the eggs with salt and pepper, then heat olive oil in a pan, add spinach until wilted, pour in the eggs, cook until set, sprinkle feta on top, fold the omelette, and serve with toasted whole grain bread.",
+          "source": "AI Generated"
+        },
+        {
+          "meal_type": "lunch",
+          "recipe_name": "Chickpea Quinoa Salad",
+          "description": "A refreshing salad made with chickpeas, quinoa, and a variety of colorful vegetables, drizzled with a lemon vinaigrette.",
+          "ingredients": [
+            "1 cup cooked quinoa",
+            "1 cup canned chickpeas, rinsed",
+            "1/2 cup cherry tomatoes, halved",
+            "1/2 cucumber, diced",
+            "1/4 red onion, diced",
+            "2 tbsp olive oil",
+            "1 tbsp lemon juice",
+            "Salt and pepper to taste"
+          ],
+          "nutritional_info": {
+            "calories": 500,
+            "protein": 20.0,
+            "carbs": 75.0,
+            "fat": 15.0
+          },
+          "preparation_time": "20 mins",
+          "instructions": "In a large bowl, combine cooked quinoa, chickpeas, tomatoes, cucumber, and red onion, in a separate bowl, whisk together olive oil, lemon juice, salt, and pepper, then pour the dressing over the salad and toss well to combine.",
+          "source": "AI Generated"
+        },
+        {
+          "meal_type": "dinner",
+          "recipe_name": "Vegetable Stir-Fry with Tofu",
+          "description": "A colorful vegetable stir-fry with crispy tofu, tossed in a savory soy sauce, served over brown rice.",
+          "ingredients": [
+            "1 cup firm tofu, cubed",
+            "2 cups mixed vegetables (bell peppers, broccoli, carrots)",
+            "2 tbsp soy sauce",
+            "1 tbsp sesame oil",
+            "1 cup cooked brown rice",
+            "1 tsp garlic, minced",
+            "1 tsp ginger, minced"
+          ],
+          "nutritional_info": {
+            "calories": 600,
+            "protein": 30.0,
+            "carbs": 80.0,
+            "fat": 20.0
+          },
+          "preparation_time": "30 mins",
+          "instructions": "In a pan, heat sesame oil, add garlic and ginger, saut\u00e9 until fragrant, add tofu and vegetables, stir-fry until cooked, pour in soy sauce, toss well, and serve over cooked brown rice.",
+          "source": "AI Generated"
+        }
+      ]
+    },
+    {
+      "day": 2,
+      "date": "2025-12-05",
+      "meals": [
+        {
+          "meal_type": "breakfast",
+          "recipe_name": "Avocado Toast with Tomato and Basil",
+          "description": "A delicious and creamy avocado toast topped with fresh tomato slices and fragrant basil, served on whole grain bread.",
+          "ingredients": [
+            "1 ripe avocado",
+            "2 slices whole grain bread",
+            "1 medium tomato, sliced",
+            "5 fresh basil leaves",
+            "1 tablespoon olive oil",
+            "Salt and pepper to taste"
+          ],
+          "nutritional_info": {
+            "calories": 400,
+            "protein": 10.0,
+            "carbs": 45.0,
+            "fat": 20.0
+          },
+          "preparation_time": "10 mins",
+          "instructions": "Toast the whole grain bread, mash the avocado with olive oil, salt, and pepper, spread it on the toast, and top with tomato slices and basil leaves.",
+          "source": "AI Generated"
+        },
+        {
+          "meal_type": "lunch",
+          "recipe_name": "Lentil and Vegetable Soup",
+          "description": "A hearty lentil soup packed with vegetables, seasoned with herbs, and served with a side of crusty bread.",
+          "ingredients": [
+            "1 cup green lentils, rinsed",
+            "4 cups vegetable broth",
+            "1 carrot, diced",
+            "1 celery stalk, diced",
+            "1 onion, chopped",
+            "2 cloves garlic, minced",
+            "1 teaspoon thyme",
+            "1 bay leaf",
+            "Salt and pepper to taste",
+            "1 tablespoon olive oil"
+          ],
+          "nutritional_info": {
+            "calories": 450,
+            "protein": 25.0,
+            "carbs": 60.0,
+            "fat": 10.0
+          },
+          "preparation_time": "30 mins",
+          "instructions": "In a pot, heat olive oil, saut\u00e9 onion, garlic, carrot, and celery until soft, add lentils, broth, thyme, bay leaf, salt, and pepper, bring to a boil, then simmer for 25 minutes until lentils are tender.",
+          "source": "AI Generated"
+        },
+        {
+          "meal_type": "dinner",
+          "recipe_name": "Stuffed Bell Peppers with Brown Rice and Black Beans",
+          "description": "Bell peppers stuffed with a flavorful mixture of brown rice, black beans, corn, and spices, baked until tender.",
+          "ingredients": [
+            "4 bell peppers, halved and seeded",
+            "1 cup cooked brown rice",
+            "1 can black beans, rinsed and drained",
+            "1 cup corn kernels",
+            "1 teaspoon cumin",
+            "1 teaspoon paprika",
+            "Salt and pepper to taste",
+            "1 tablespoon olive oil",
+            "1/2 cup shredded cheese (optional)"
+          ],
+          "nutritional_info": {
+            "calories": 600,
+            "protein": 20.0,
+            "carbs": 90.0,
+            "fat": 15.0
+          },
+          "preparation_time": "45 mins",
+          "instructions": "Preheat the oven to 375\u00b0F, mix cooked rice, black beans, corn, cumin, paprika, salt, and pepper, stuff the mixture into halved bell peppers, top with cheese if desired, and bake for 30 minutes until peppers are tender.",
+          "source": "AI Generated"
+        },
+        {
+          "meal_type": "snack",
+          "recipe_name": "Greek Yogurt with Honey and Walnuts",
+          "description": "A simple yet satisfying snack of creamy Greek yogurt drizzled with honey and topped with crunchy walnuts.",
+          "ingredients": [
+            "1 cup Greek yogurt",
+            "2 tablespoons honey",
+            "1/4 cup walnuts, chopped"
+          ],
+          "nutritional_info": {
+            "calories": 250,
+            "protein": 15.0,
+            "carbs": 30.0,
+            "fat": 10.0
+          },
+          "preparation_time": "5 mins",
+          "instructions": "In a bowl, combine Greek yogurt, drizzle with honey, and top with chopped walnuts.",
+          "source": "AI Generated"
+        }
+      ]
+    },
+    {
+      "day": 3,
+      "date": "2025-12-06",
+      "meals": [
+        {
+          "meal_type": "breakfast",
+          "recipe_name": "Chia Seed Pudding with Almonds and Berries",
+          "description": "A creamy chia seed pudding topped with fresh berries and crunchy almonds, offering a nutritious start to your day.",
+          "ingredients": [
+            "1/4 cup chia seeds",
+            "1 cup almond milk",
+            "1 tablespoon maple syrup",
+            "1/2 cup mixed berries (strawberries, blueberries, raspberries)",
+            "2 tablespoons sliced almonds"
+          ],
+          "nutritional_info": {
+            "calories": 350,
+            "protein": 10.0,
+            "carbs": 45.0,
+            "fat": 15.0
+          },
+          "preparation_time": "10 mins",
+          "instructions": "In a bowl, combine chia seeds, almond milk, and maple syrup, stir well, and refrigerate for at least 4 hours or overnight; serve topped with mixed berries and sliced almonds.",
+          "source": "AI Generated"
+        },
+        {
+          "meal_type": "lunch",
+          "recipe_name": "Mediterranean Couscous Bowl",
+          "description": "A vibrant bowl of couscous mixed with roasted vegetables, olives, and feta cheese, drizzled with a lemon-olive oil dressing.",
+          "ingredients": [
+            "1 cup cooked couscous",
+            "1/2 cup cherry tomatoes, halved",
+            "1/2 cup cucumber, diced",
+            "1/4 cup Kalamata olives, pitted and sliced",
+            "1/4 cup feta cheese, crumbled",
+            "2 tablespoons olive oil",
+            "1 tablespoon lemon juice",
+            "Salt and pepper to taste"
+          ],
+          "nutritional_info": {
+            "calories": 600,
+            "protein": 18.0,
+            "carbs": 75.0,
+            "fat": 25.0
+          },
+          "preparation_time": "20 mins",
+          "instructions": "In a large bowl, combine cooked couscous, cherry tomatoes, cucumber, olives, and feta cheese; whisk together olive oil, lemon juice, salt, and pepper, then drizzle over the salad and toss to combine.",
+          "source": "AI Generated"
+        },
+        {
+          "meal_type": "dinner",
+          "recipe_name": "Creamy Mushroom and Spinach Pasta",
+          "description": "A rich and creamy pasta dish with saut\u00e9ed mushrooms and spinach, finished with a sprinkle of Parmesan cheese.",
+          "ingredients": [
+            "8 ounces whole wheat pasta",
+            "2 cups fresh spinach",
+            "1 cup mushrooms, sliced",
+            "1/2 cup heavy cream",
+            "1/4 cup Parmesan cheese, grated",
+            "2 cloves garlic, minced",
+            "2 tablespoons olive oil",
+            "Salt and pepper to taste"
+          ],
+          "nutritional_info": {
+            "calories": 750,
+            "protein": 25.0,
+            "carbs": 90.0,
+            "fat": 30.0
+          },
+          "preparation_time": "25 mins",
+          "instructions": "Cook the pasta according to package instructions; in a skillet, heat olive oil, saut\u00e9 garlic and mushrooms until soft, add spinach and cook until wilted, then stir in heavy cream and Parmesan, mixing until smooth, and combine with the drained pasta.",
+          "source": "AI Generated"
+        }
+      ]
+    }
+  ],
+  "summary": {
+    "total_meals": 10,
+    "dietary_compliance": [
+      "vegetarian"
+    ],
+    "estimated_cost": "$35-50",
+    "avg_prep_time": "21 mins"
+  },
+  "warnings": [
+    {
+      "category": "preferences_unspecified",
+      "value": "No nutritional preferences specified. Generating balanced meal plan."
+    },
+    {
+      "category": "special_requirements_unspecified",
+      "value": "No special requirements specified. Generating standard meal plan."
+    }
+  ]
+}

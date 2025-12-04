@@ -1,0 +1,50 @@
+{
+  "timestamp": 1764882130,
+  "query": "Create a 3-day vegetarian meal plan",
+  "initial_extraction": {
+    "duration_days": 3,
+    "dietary_restrictions": [
+      "vegetarian"
+    ],
+    "preferences": [],
+    "special_requirements": [],
+    "warnings": [
+      {
+        "category": "preferences_unspecified",
+        "value": "No nutritional preferences specified. Generating balanced meal plan."
+      },
+      {
+        "category": "special_requirements_unspecified",
+        "value": "No special requirements specified. Generating standard meal plan."
+      }
+    ]
+  },
+  "final_extraction": {
+    "duration_days": 3,
+    "dietary_restrictions": [
+      "vegetarian"
+    ],
+    "preferences": [],
+    "special_requirements": [],
+    "warnings": [
+      {
+        "category": "preferences_unspecified",
+        "value": "No nutritional preferences specified. Generating balanced meal plan."
+      },
+      {
+        "category": "special_requirements_unspecified",
+        "value": "No special requirements specified. Generating standard meal plan."
+      }
+    ]
+  },
+  "llm_logging": {
+    "tokens_prompt": 879,
+    "tokens_completion": 52,
+    "tokens_total": 931,
+    "llm_latency_ms": 2560,
+    "enabled": true,
+    "changes_made": {},
+    "regex_latency_ms": 0,
+    "total_duration_ms": 2771
+  }
+}

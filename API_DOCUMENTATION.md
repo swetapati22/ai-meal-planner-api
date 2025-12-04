@@ -78,7 +78,7 @@ http://localhost:8001
       "value": "string"
     }
   ],
-  "llm_logging": {
+  "query_validation_llm_logging": {
     "tokens_prompt": "integer",
     "tokens_completion": "integer",
     "tokens_total": "integer",
@@ -87,6 +87,34 @@ http://localhost:8001
     "total_duration_ms": "integer",
     "enabled": "boolean",
     "changes_made": {}
+  },
+  "meal_generation_llm_logging": {
+    "tokens_prompt": "integer",
+    "tokens_completion": "integer",
+    "tokens_total": "integer",
+    "llm_latency_ms": "integer",
+    "total_duration_ms": "integer",
+    "days_generated": "integer",
+    "per_day_logging": [
+      {
+        "day": "integer",
+        "tokens_prompt": "integer",
+        "tokens_completion": "integer",
+        "tokens_total": "integer",
+        "llm_latency_ms": "integer"
+      }
+    ]
+  },
+  "total_llm_logging": {
+    "tokens_prompt": "integer",
+    "tokens_completion": "integer",
+    "tokens_total": "integer",
+    "llm_latency_ms": "integer",
+    "total_duration_ms": "integer",
+    "query_validation_tokens": "integer",
+    "meal_generation_tokens": "integer",
+    "query_validation_time_ms": "integer",
+    "meal_generation_time_ms": "integer"
   }
 }
 ```
@@ -187,15 +215,43 @@ curl -X POST "http://localhost:8001/api/generate-meal-plan" \
     "avg_prep_time": "25 mins"
   },
   "warnings": [],
-  "llm_logging": {
-    "tokens_prompt": 1200,
-    "tokens_completion": 800,
-    "tokens_total": 2000,
-    "llm_latency_ms": 2500,
-    "regex_latency_ms": 15,
-    "total_duration_ms": 3000,
+  "query_validation_llm_logging": {
+    "tokens_prompt": 500,
+    "tokens_completion": 300,
+    "tokens_total": 800,
+    "llm_latency_ms": 2560,
+    "regex_latency_ms": 0,
+    "total_duration_ms": 2560,
     "enabled": true,
     "changes_made": {}
+  },
+  "meal_generation_llm_logging": {
+    "tokens_prompt": 2277,
+    "tokens_completion": 2287,
+    "tokens_total": 4564,
+    "llm_latency_ms": 49180,
+    "total_duration_ms": 49184,
+    "days_generated": 5,
+    "per_day_logging": [
+      {
+        "day": 1,
+        "tokens_prompt": 595,
+        "tokens_completion": 684,
+        "tokens_total": 1279,
+        "llm_latency_ms": 16301
+      }
+    ]
+  },
+  "total_llm_logging": {
+    "tokens_prompt": 2777,
+    "tokens_completion": 2587,
+    "tokens_total": 5364,
+    "llm_latency_ms": 51740,
+    "total_duration_ms": 49184,
+    "query_validation_tokens": 800,
+    "meal_generation_tokens": 4564,
+    "query_validation_time_ms": 2560,
+    "meal_generation_time_ms": 49180
   }
 }
 ```

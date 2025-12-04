@@ -448,9 +448,4 @@ Pydantic is used throughout the application for robust data validation:
 - Stack traces included for debugging
 - Error messages are user-friendly in API responses
 
-## Contact
-
-For questions about this implementation, please refer to the assignment document or contact the hiring team.
-
----
 

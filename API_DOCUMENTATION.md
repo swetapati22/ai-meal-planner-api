@@ -9,7 +9,6 @@ http://localhost:8001
 ## Interactive Documentation
 
 - **Swagger UI**: `http://localhost:8001/docs`
-- **ReDoc**: `http://localhost:8001/redoc`
 
 ---
 
@@ -400,14 +399,6 @@ curl -X GET "http://localhost:8001/api/health"
 
 ---
 
-## Rate Limiting
-
-Currently disabled by default. Can be enabled via environment variables:
-- `RATE_LIMIT_ENABLED=True`
-- `RATE_LIMIT_REQUESTS_PER_MINUTE=60`
-
----
-
 ## Caching
 
 Meal plans are cached based on exact match of:
@@ -416,7 +407,7 @@ Meal plans are cached based on exact match of:
 - Duration (days)
 - Special requirements
 
-Cache TTL: 24 hours (configurable via `CACHE_TTL_HOURS`)
+Cache is persistent across server restarts (no expiration), but is not user-specific. The cache stores meal plans based solely on query parameters without any user identification. Identical queries from different users will return the same cached meal plan. Cache can be disabled via `ENABLE_CACHE=False` environment variable.
 
 ---
 

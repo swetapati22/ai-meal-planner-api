@@ -5,7 +5,7 @@ A production-ready REST API that generates personalized, multi-day meal plans ba
 ## Problem Understanding
 
 This API solves the problem of generating personalized meal plans by:
-- Parsing natural language queries to extract dietary preferences, restrictions, and requirements
+- Parsing natural language queries to extract duration, dietary restrictions, preferences, special requirements and check for conflicting requirements.
 - Generating diverse, nutritionally balanced meal plans for 1-7 days
 - Providing detailed recipes with ingredients, instructions, and nutritional information
 - Ensuring dietary compliance and minimizing recipe repetition
@@ -15,35 +15,30 @@ This API solves the problem of generating personalized meal plans by:
 ### System Components
 
 ```
-┌─────────────┐
-│   Client    │
-└──────┬──────┘
-       │
-       ▼
+         ┌─────────────┐
+         │   Client    │
+         └─────┬───────┘
+               │
+               ▼
 ┌─────────────────────────────────┐
-│      FastAPI Application         │
+│      FastAPI Application        │
 │  ┌───────────────────────────┐  │
-│  │   API Routes (routes.py)   │  │
+│  │   API Routes (routes.py)  │  │
 │  └───────────┬───────────────┘  │
-│              ▼                   │
+│              ▼                  │
 │  ┌───────────────────────────┐  │
 │  │  Hybrid Query Parser      │  │
 │  │  (Regex + LLM Validation) │  │
 │  └───────────┬───────────────┘  │
-│              ▼                   │
+│              ▼                  │
 │  ┌───────────────────────────┐  │
 │  │  Cache Check              │  │
 │  │  (File-based with mapper) │  │
 │  └───────────┬───────────────┘  │
-│              ▼                   │
+│              ▼                  │
 │  ┌───────────────────────────┐  │
 │  │  Meal Plan Generator      │  │
 │  │  (Orchestrates generation)│  │
-│  └───────────┬───────────────┘  │
-│              ▼                   │
-│  ┌───────────────────────────┐  │
-│  │  LLM Service              │  │
-│  │  Cache Service            │  │
 │  └───────────────────────────┘  │
 └─────────────────────────────────┘
 ```
@@ -51,7 +46,7 @@ This API solves the problem of generating personalized meal plans by:
 ### Key Design Decisions
 
 1. **Query Processing**: Hybrid approach using regex patterns for fast extraction, enhanced with LLM validation for accuracy and synonym handling
-2. **Recipe Sourcing**: Primary LLM generation with multi-tier fallback (LLM single meal → Placeholder)
+2. **Recipe Sourcing**: Primary LLM generation (LLM meal generation/day) with multi-tier fallback (LLM single meal → Placeholder)
 3. **Caching**: File-based caching with mapper for exact query parameter matching - stores meal plans locally in `meals_store/` directory with JSON mapper for instant lookup, reducing LLM API calls and costs
 4. **Error Handling**: Multi-tier fallback system (LLM fallback → Placeholder) ensuring high-quality output even on failures
 5. **Diversity**: Track previous meals and pass context to LLM to minimize repetition across days
@@ -132,15 +127,10 @@ Use the Swagger UI at `http://localhost:8001/docs` to test the API interactively
 ### Example cURL Commands
 
 ```bash
-# Basic request
+# Request Example:
 curl -X POST "http://localhost:8001/api/generate-meal-plan" \
   -H "Content-Type: application/json" \
   -d '{"query": "Create a 3-day vegetarian meal plan"}'
-
-# Complex request
-curl -X POST "http://localhost:8001/api/generate-meal-plan" \
-  -H "Content-Type: application/json" \
-  -d '{"query": "7-day low-carb, dairy-free meal plan with high protein"}'
 ```
 
 ## Project Structure
@@ -185,8 +175,11 @@ Key configuration options (see `.env.example` for full list):
 
 - `OPENAI_API_KEY`: Your OpenAI API key (required)
 - `OPENAI_MODEL`: Model to use (default: `gpt-4o-mini`)
-- `CACHE_TTL_HOURS`: Cache TTL in hours (default: 24)
-- `DEBUG`: Enable debug mode (default: False)
+- `ENABLE_CACHE`: Enable file-based caching (default: True)
+- `ENABLE_LLM_VALIDATION`: Enable LLM validation of query parsing (default: True)
+- `ENABLE_QUERY_DUMP`: Enable saving query parsing dumps for debugging (default: True)
+- `DEBUG`: Enable debug mode (default: True)
+- `LOG_LEVEL`: Logging level - DEBUG, INFO, WARNING, ERROR (default: INFO)
 
 ## Features Implemented
 
@@ -203,18 +196,17 @@ Key configuration options (see `.env.example` for full list):
 - [x] File-based caching mechanism with mapper
 - [x] Structured output validation (Pydantic)
 - [x] LLM-based query validation and enhancement
-- [x] Nutritional balance across the week
+- [x] Nutritional balance across the week through prompting
 - [x] Multi-tier fallback system (LLM → Placeholder)
 - [ ] Unit tests (structure ready, tests pending)
 - [ ] Docker containerization (pending)
-- [ ] Rate limiting (infrastructure ready, disabled by default)
 
 ## Known Limitations
 
 1. **Duration Limit**: Maximum 7 days (as per requirements)
 2. **Recipe Quality**: Depends on LLM quality and prompt engineering
 3. **No Persistence**: User preferences are not stored between requests
-4. **Basic Nutritional Info**: Calculations are approximate
+4. **Basic Nutritional Info**: Depends on LLM quality as nutritional info is LLM generated
 5. **Cost**: LLM API calls can be expensive at scale (mitigated by caching)
 6. **Fallback Recipes**: Limited fallback recipes if all services fail
 
@@ -223,15 +215,12 @@ Key configuration options (see `.env.example` for full list):
 Given more time, I would implement:
 
 1. **User Management**: Store user preferences and meal plan history
-2. **Advanced Caching**: Redis-based distributed caching
-3. **Recipe Database**: Local database of curated recipes
-4. **Nutritional Analysis**: More sophisticated nutritional calculations
-5. **Shopping Lists**: Generate shopping lists from meal plans
-6. **Image Generation**: Add recipe images using DALL-E or similar
-7. **Meal Prep Instructions**: Batch cooking and prep guides
-8. **Unit Tests**: Comprehensive test coverage
-9. **Docker**: Containerization for easy deployment
-10. **Monitoring**: Observability with logging and metrics
+2. **Recipe Database**: Local database of curated recipes
+3. **Nutritional Analysis**: More sophisticated nutritional calculations
+4. **Shopping Lists**: Generate shopping lists from meal plans
+5. **Unit Tests**: Comprehensive test coverage
+6. **Docker**: Containerization for easy deployment
+7. **System Evaluation**: Design evaluation criteria
 
 ## Design Decisions & Trade-offs
 
@@ -273,22 +262,19 @@ Given more time, I would implement:
   2. Pass previous meals to LLM in prompt for each new day
   3. LLM instructed to avoid: same ingredients, same cuisine style, same protein source, similar recipe structures
   4. Nutritional balance also considered to ensure variety
-- **Result**: <10% repetition across 7-day meal plans
+- **Trade-off**: More LLM calls, but ensures high-quality output.
 
 ## Performance Considerations & Monitoring
 
 ### Response Time Tracking
-- **Query Parsing**: Tracks regex latency (~15ms) and total parsing time (including LLM validation ~2-3s)
+- **Query Parsing**: Tracks regex latency and total parsing time (including LLM validation)
 - **Meal Generation**: Tracks total generation time per meal plan
-- **LLM Calls**: Tracks latency for each day's meal generation (~2-5s per day)
-- **Logging**: All timing information logged with `[REGEX]`, `[LLM]`, `[MEAL GEN]` prefixes for easy monitoring
+- **LLM Calls**: Tracks latency for each day's meal generation
 
 ### LLM Token Usage Tracking
 - **Query Validation**: Tracks prompt tokens, completion tokens, and total tokens for LLM query validation
 - **Meal Generation**: Tracks token usage for each day's meal generation
-- **Logging**: Token usage logged for every LLM call (e.g., `[LLM] Day 1 generation: 1200+800=2000 tokens, 2500ms`)
 - **Response Data**: Token usage included in LLM logging fields of response (see LLM Logging in Response section below)
-- **Cost Optimization**: Token-efficient prompts reduce usage by ~30% compared to verbose prompts
 
 ### LLM Logging in Response
 
@@ -374,16 +360,14 @@ This comprehensive logging enables:
 - **Async Operations**: Uses async/await for non-blocking I/O
 - **Per-Day LLM Generation**: One LLM call per day (not per meal) for efficiency
 - **Response Time**: 
-  - Cached: <100ms
-  - New generation: 5-15 seconds (depends on duration and LLM latency)
-- **Token Efficiency**: Optimized prompts reduce token usage by ~30%
+  - Cached: 100ms
+  - New generation: depends on duration and LLM latency
+- **Token Efficiency**: Optimized prompts to reduce tokens
 
 ## Security Considerations
-
 - API keys stored in environment variables (never in code)
-- Input validation using Pydantic (see Data Validation section below)
+- Input validation using Pydantic
 - CORS configured (should be restricted in production)
-- Rate limiting recommended for production
 
 ## Data Validation & Error Tracking
 
@@ -441,10 +425,3 @@ Pydantic is used throughout the application for robust data validation:
 5. **FastAPI Automatic Validation**:
    - Request validation errors → 422 Unprocessable Entity (handled by exception handler)
    - Response validation errors → Internal server error (logged)
-
-**Error Logging**:
-- All errors logged with appropriate log levels (ERROR, WARNING, INFO)
-- Structured logging with process prefixes: `[REGEX]`, `[LLM]`, `[MEAL GEN]`, `[FALLBACK]`
-- Stack traces included for debugging
-- Error messages are user-friendly in API responses
-
